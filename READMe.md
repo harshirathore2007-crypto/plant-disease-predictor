@@ -94,65 +94,10 @@ pip install pytest
 
 ## Run the project
 
-1. Save the provided script to a file (for example `predict.py`). Example content (already in your repository) — ensure it is guarded by a main check if you want to import it for tests:
+1. Save the provided script to a file (for example `predict.py`). Example content (already in your repository) — ensure it is guarded by a main check if you want to import it for tests
 
-```python
-# predict.py
-diseases = {
-    "powdery mildew": {
-        "keywords": ["white", "powder", "sports", "fungus"],
-        "cause": "fungal infection on the leaves.",
-        "treatment": "use sulfur spray or neem oil. improve air circulation."
-    },
-    "leaf blight": {
-        "keywords": ["brown", "yellow", "dry", "burnt", "edges"],
-        "cause": "bacterial or fungal infection causing leaf decay.",
-        "treatment": "remove affected leaves and avoid overhead watering."
-    },
-    "root rot": {
-        "keywords": ["wet", "soggy", "root", "black", "soft"],
-        "cause": "excess watering leading to fungal root damage.",
-        "treatment": "reduce watering, repot with dry soil, trim damaged roots."
-    },
-    "nutient deficiency": {
-        "keywords": ["pale", "weak", "yellow", "slow", "small"],
-        "cause": "lack of essential nutrients in soli. ",
-        "treatment": "add fertilizer with NPK and micronutrients"
-    }
-}
 
-def predict_disease(text):
-    rext = text.lower().split()
-    scores = {}
-    for disease_name, data in diseases.items():
-        scores[disease_name] = 0
-        for word in rext:
-            if word in data["keywords"]:
-                scores[disease_name] += 1
-    best_match = max(scores, key=scores.get)
-    if scores[best_match] == 0:
-        return None
-    else:
-        return best_match
-
-if __name__ == "__main__":
-    symtoms = input('describe the plant symtoms :')
-    result = predict_disease(symtoms)
-    if result:
-        print("\npossible disease:", result)
-        print('cause:', diseases[result]["cause"])
-        print('treatment:', diseases[result]["treatment"])
-    else:
-        print("\nNo specific disease detected.")
-        print("general suggestion: ensure proper sunlight, watering, and fertilizer.")
-```
-
-2. Run from the terminal:
-```bash
-python predict.py
-```
-
-3. At the prompt, type a plain-English description of symptoms:
+ 2. At the prompt, type a plain-English description of symptoms:
 Example:
 describe the plant symtoms : leaves are white with a powdery coating
 
